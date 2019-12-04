@@ -1,0 +1,214 @@
+<script>
+    /*
+                     __________________________________________
+                    |                                          |
+=================== |  Rangkuman SourceCode Javascript pemula  | ====================================================
+                    |          untuk belajar sendiri           |
+                    |             Bagian : Kedua               |
+                    |                                          |
+=================== |        Made by : Viody Alfaridzi         | ====================================================
+                    |__________________________________________|
+    
+    bisa di pelajari sendiri langsung via Freecodecamp.org
+
+    Persiapan :
+    1. Punya text editor; Visual Studio Code (recomended), Sublime
+    2. Buka file ini di code editor n di browser (Chrome (recomended))
+    3. Inspect halaman web-nya, lalu ke console
+
+    */
+
+    // ===== FUNCTION =====
+
+    /*
+    function digunakan jika anda ingin membuat suatu fungsi / cara / metode yang akan digunakan berulangkali
+    */
+
+    // syntax membuat function :
+
+    function tes() { // tes disini adalah nama function yang bisa ditulis sesuka hati
+        console.log("ini dari function!");
+    }
+
+    tes();
+
+    // passing data melalui function :
+
+    function tesLagi(x, y) {
+        console.log(x + y);
+    }
+
+    tesLagi(3, 2); // nilai 3 dan 2 di pass ke x dan y di function "tesLagi"
+
+    // ==== Penggunaan SCOPE variabel ====
+
+    //Scope adalah jangkauan yg bisa di capai variabel
+
+    var myGlobal = 10; // variabel ini memiliki SCOPE global karena di deklarasikan diluar
+
+    function scope1() {
+        var myLocal = 100; //variabel ini memiliki SCOPE local yaitu hanya bisa di gunakan di dalam fungsi "scope1" saja, karena di deklarasikan didalam function
+
+        console.log("berikut dari scope1 :");
+        console.log("hasil panggilan dari var myGlobal : " + myGlobal); //nyoba manggil var dari luar function
+        console.log("hasil panggilan dari var myLocal : " + myLocal); //nyoba manggil var dari dalam function
+    }
+
+    function scope2() {
+        console.log("berikut dari scope2 :");
+        console.log(myLocal); // akan mengalami error karena var "myLocal" di deklarasikan dalam function, yg mana setiap var yang dideklarasikan dalam function akan memiliki scope lokal
+    }
+
+    scope1();
+    // scope2(); // silahkan di uncomment jika ingin melihat pembuktiannya
+
+    /*
+
+    ==== FYI but it's IMPORTANT to know! ====
+
+    1.  jika suatu saat dalam kode program memiliki nama var yg sama antara var global dan var local dan ingin memanggil isinya maka yang akan di dahulukan adalah isi dari variabel local
+
+    2.  jika dalam function tidak diberikan return maka hasilnya akan undefined
+
+    3. mengapa dalam kondisi / syarat dalam boolean samadengannya tidak "=" melainkan "==", karena jika jika "=" maka JS menganggap anda mengisi nilai suatu var
+
+    4. jika ingin menginginkan pengondisian super identik dapat menggunakan "==="
+
+    5. pengecekan if sesuai dari atas ke bawah jika kondisi diatas sudah susuai maka JS tidak mempedulikan konndisi yang ada dibawahnya
+
+    */
+
+    // ===== Masih ke Penggunaan FUNCTION ======
+
+    // = penggunaan return =
+
+    function krgLima(angka) {
+
+        return angka - 5; // coba hapus return dan lihat apa yang terjadi
+
+    }
+
+    console.log(krgLima(10));
+
+    // = memasukan nilai return ke var =
+
+    function luasLing(r) {
+        return 3.14 * r * r;
+    }
+
+    hasil = luasLing(20); // memasukan nilai return ke var "hasil"
+
+    console.log(hasil);
+
+    // = manipulasi array dengan function =
+
+    var contohArray = [1, 2, 3, 4, 5];
+
+    console.log(JSON.stringify(contohArray)) // untuk melihat isi array di log
+
+    function tambahItem(array, item) {
+        array.push(item);
+        console.log(" telah ditambahkan");
+        return item;
+    }
+
+    console.log(tambahItem(contohArray, 6));
+    console.log(JSON.stringify(contohArray)) // melihat lagi array di log setelah function dijalankan
+
+    // = Function Boolean =
+
+    function cobaBoolean(jikaBenar) {
+        if (jikaBenar) { // kondisinya
+            return "Ini Benar!";
+        } {
+            return "Ini Salah!";
+        }
+    }
+
+    console.log(cobaBoolean(true));
+
+    // misal :
+
+    function samadengan(angka) {
+        if (angka == 10) {
+            return "Benar!, Samadengan 10";
+        } { // ditambahkan else juga fine2 saja
+            return "Salah!, Tidak Samadengan 10";
+        }
+    }
+
+    console.log(samadengan(10)); // coba ganti parameter-nya dengan angka yg lain, n lihat hasilnya ... cobalah operator lainnya seperti yg ada dibawah.
+
+    /*
+
+    === Operator2 dalam pengondisian boolean ===
+    " == "    : Samadengan
+    " === "   : Samadengan Identik
+    " !== "   : Tidak Samadengan
+    " !+== "  : TidakSamadengan Identik
+    " > "     : Lebih Besar Dari
+    " >= "    : Lebih Besar Dari Samadengan
+    " < "     : Lebih Kecil Dari
+    " <= "    : Lebih Kecil Dari Samadengan
+
+    === Operator Logika ===
+    " && "    : Dan
+    " || "    : Atau
+
+    */
+
+    function elseIf(angka) {
+        if (angka <= 10) {
+            return "kurang dari 10";
+        } else if (angka >= 20) {
+            return "lebih dari 20";
+        } else {
+            return "antara 10 dan 20";
+        }
+    }
+
+    // = mengatur antrian if yg benar =
+
+    console.log(elseIf(13)); // ganti parameter "elseIf lihat apa yg terjadi
+
+    function ukuran(angka) {
+        if (angka <= 30) {
+            return "XS";
+        } else if (angka <= 35) {
+            return "S";
+        } else if (angka <= 40) {
+            return "M";
+        } else if (angka <= 45) {
+            return "L";
+        } else if (angka <= 50) {
+            return "XL";
+        } else {
+            return "XXL"
+        }
+    }
+
+    console.log("Ukuran-nya : " + ukuran(43));
+
+    // = penggunaan indexes di if =
+
+    var Ukuran = ["XS", "S", "M", "L", "XL", "XXL"];
+
+    function ukuranLagi(angka) {
+        if (angka <= 30) {
+            return Ukuran[0];
+        } else if (angka <= 35) {
+            return Ukuran[1];
+        } else if (angka <= 40) {
+            return Ukuran[2];
+        } else if (angka <= 45) {
+            return Ukuran[3];
+        } else if (angka <= 50) {
+            return Ukuran[4];
+        } else {
+            return Ukuran[5]
+        }
+    }
+
+    console.log("Ukuran-nya (2): " + ukuranLagi(43));
+
+</script>

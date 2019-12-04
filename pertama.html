@@ -1,0 +1,181 @@
+<script>
+    /*
+                     __________________________________________
+                    |                                          |
+=================== |  Rangkuman SourceCode Javascript pemula  | ====================================================
+                    |          untuk belajar sendiri           |
+                    |             Bagian : Pertama             |
+                    |                                          |
+=================== |        Made by : Viody Alfaridzi         | ====================================================
+                    |__________________________________________|
+
+    bisa di pelajari sendiri langsung via Freecodecamp.org
+
+    Persiapan :
+    1. Punya text editor; Visual Studio Code (recomended), Sublime
+    2. Buka file ini di code editor n di browser (Chrome (recomended))
+    3. Inspect halaman web-nya, lalu ke console
+
+   */
+
+    console.log("Hello World"); // buat tes apakah console berhasil, buka ini di browser -> inspect -> console
+
+    //comment in-line
+
+    /* multi-line
+    comment */
+
+    /*
+
+    ========= Tipe Data ==========
+
+    1. Undefined    : sesuatu yang tidak bisa di definisikan sbg variabel maupun unsur lain
+    2. Null         : berarti tidak ada unsur sama sekali
+    3. Boolean      : tipe data yg memiliki nilai T | F
+    4. Number       : ya angka-lah!!
+    5. String       : berupa susunan baris banyak kata
+    6. Symbol       : mengandung unsur yang unik
+    7. Object       : tipe data yang dideklarasikan sebagai objek
+
+    */
+
+    // ========= Variabel ==========
+
+    /*
+    Variabel di dalam Javascript +- memiliki fungsi yang sama seperti pada bahasa pemrograman lainnya,
+    untuk menyimpan data.
+    */
+
+    var namaSaya = "Vio"; // variabel yang dinamis yg bersifat global
+
+    namaSaya = 75; // mengubah isi dari variabel "namaSaya"
+
+    let namaKu = "Ody"; // variabel yang bersifat scope hanya dimana dia dibuat
+
+    const pi = 3.14; // variabel yang tidak bisa di ubah lagi
+
+    console.log();
+
+    // ==== Deklarasi dan Memasukan Nilai Vairabel ====
+
+    // syntax-nya : var nama_var;
+
+    // misal :
+    var alamat; // hanya mendeklarasikan variabel
+
+    var address =
+        "Karangrejo"; // mendeklarasikan variabel sekalian memasukan nilai string "Karangrejo" ke var "address"
+
+    /*
+
+    ==== FYI but it's IMPORTANT to know! ====
+
+    1.  Javascript pakai format penulisan camelCase jadi hati2 dalam penggunaannya.
+        karena jika salah dalam penulisannya pasti akan terjadi error
+
+    2.  var di javascript sangatlah multiguna tipe data apa saja dapat dimasukan kedalam var-nya.
+        mau dari int, float, string ,dll
+
+    */
+
+    // misal :
+
+    var sukuSaya; // deklarasi variabel yang benar menggunakan camelCase
+
+    SukuSaya =
+        "banjar"; // karena penulisan nama variabel salah maka string "banjar" tidak akan di masukan ke dalam var "sukuSaya"
+
+    /*
+
+     ========== Operator2 di Javascript ===========
+
+    1. (+)  = tambah
+    2. (-)  = kurang
+    3. (*)  = kali
+    4. (/)  = bagi
+    5. (%)  = modulus ( nilai sisa )
+    6. (=)  = sama dengan
+
+    */
+
+    // ========== Bermain Dengan Angka N Operator ==========
+
+    var hasil = 2 + 2; // dapat di implementasikan dengan operator lain.. silahkan dicoba dengan (-), (*), dkk
+
+    console.log("Hasil dari var jmlh = " + hasil);
+
+    // ======== Shortcuts!!! ========
+
+    // increement untuk memperpendek kode penambahan 1
+    // decreement untuk memperpendek kode pengurangan 1
+
+    var incr = 3;
+    incr++; // yang seharusnya incr = incr + 1 ;
+    console.log("hasil increement : " + incr);
+
+    var decr = 3;
+    decr--;
+    console.log("hasil decreement : " + decr);
+
+    // shortcuts dgn operator
+
+    var a = 3;
+    a += 2; // yang seharusnya bisa menggunakan kode : a = a + 2; ... shortcut kode ini berfungsi dengan semua operator
+    console.log("hasil dari shortcut : " + a);
+
+    // ======= Konkatenasi String =======
+    // teknik penggabungan antar string di Javascript
+
+    var str1 = "Pertama"; // str1 hanya nama yang diberikan agar mudah di ingat
+    var str2 = "Kedua";
+    var str3 = str1 + ", " + str2 + ".";
+
+    console.log(str3);
+
+    // ========= Array ========
+    // membuat kita bisa menyimpan banyak data di dalam satu tempat yg sama
+
+    // array biasa
+    var myArr = ["Viody", 75];
+
+    // array multi-dimensi
+    var myArry = [
+        ["Viody", 75],
+        ["Paidy", 76]
+    ];
+
+    // mengambil sesuatu dari dalam array
+    var nomor = [10, 20, 30, 40, 50, 60, 70, 80];
+    var nomorSaya = nomor[
+        2]; // maka var "myNum" akan terisi oleh nilai 30 dari var array "num"... penhitungan index dimulai dari 0
+
+    // menggunakan notasi braket untuk mengganti nilai array
+    nomor[0] = 100; // mengubah nilai 10 menjadi 100 di var array "num"
+
+    // mengakses array multi-dimensi
+    var newNum = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+    var ambil = newNum[1][
+        0
+    ]; //var "ambil" diisi oleh nilai angka 4 yg di ambil dari var array newNum... [] pertama adalah urutan dari outer braketnya begitu juga berikutnya.
+
+    /*
+    fungsi2 dalam array :
+    1. push() => adalah fungsi untuk menambahkan nilai kedalam array dari posisi terakhir
+    2. pop() => adalah fungsi untuk menghapus nilai didalam array dari posisi terakhir
+    3. shift() => adalah fungsi untuk menghapus nilai didalam array dari posisi pertama
+    4. unshift() => adalah fungsi untuk menambahkan nilai kedalam array dari posisi pertama
+    */
+
+    // misal :
+    var data = [
+        ["Biskuit", 12],
+        ["Bolu", 5],
+        ["Roti", 15]
+    ];
+    var dataBaru = data.push(["Waffle", 3]); // sintaxnya sama untuk semua fungsi2 diatas.
+
+</Script>

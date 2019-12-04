@@ -1,0 +1,208 @@
+<script>
+    /*
+                            __________________________________________
+                           |                                          |
+       =================== |  Rangkuman SourceCode Javascript pemula  | ====================================================
+                           |          untuk belajar sendiri           |     
+                           |             Bagian : Keempat             |
+                           |                                          |
+       =================== |        Made by : Viody Alfaridzi         | ====================================================
+                           |__________________________________________|
+           
+           bisa di pelajari sendiri langsung via Freecodecamp.org
+       
+           Persiapan :
+           1. Punya text editor; Visual Studio Code (recomended), Sublime, Atom, Notepad, dkk
+           2. Buka file ini di code editor n di browser (Chrome (recomended), google, dkk)
+           3. Inspect halaman web-nya, lalu ke console
+       
+           */
+
+    // ============== LOOPS =======================
+    //perulangan di JS digunakan untuk menyingkat kode yg bersifat repetisi
+
+    // === perulangan dgn WHILE ===
+
+    var loopWhile = [];
+
+    var i = 0;
+
+    while (i < 9) {
+        loopWhile.push(i);
+        i++
+    };
+
+    console.log(" dari loop while : " + loopWhile);
+
+    // === perulangan dgn FOR ===
+
+    var loopFor = [];
+
+    var i = 0;
+
+    for (i = 0; i < 9; i++) {
+        loopFor.push(i);
+    }
+
+    console.log(" dari loop for : " + loopFor);
+
+    // === iterasi array ===
+
+    var arrayKu = [1, 1, 7, 5, 1, 1];
+    var totalArray = 0;
+
+    for (let i = 0; i < arrayKu.length; i++) {
+        totalArray += arrayKu[i];
+    }
+
+    console.log(totalArray);
+
+    // === manipulasi nested array dgn for ===
+
+    function dikaliSemua(array) {
+        var item = 1;
+
+        for (var i = 0; i < array.length; i++) {
+            for (var j = 0; j < array[i].length; j++) {
+
+                item *= array[i][j];
+
+            }
+        }
+        return item;
+    }
+
+    var item = dikaliSemua([[7, 5], [7, 6], [1, 2, 3]]);
+    console.log(item);
+
+    // === perulangan do while ===
+
+    var loopDoWhile = [];
+    var i = 0;
+
+    do {
+        loopDoWhile.push(i);
+        i++;
+    } while (i < 10);
+
+    console.log(loopDoWhile); // perbedaan while dgn do while adalah do while dilakukan perulangannya dahulu lalu di cek 
+
+    // === program melihat profile ===
+
+    var kontak = [{
+        "nama": "Viody",
+        "nomor": "087815818500",
+        "likes": ["programing", "drawing", "playing videogames"]
+    }, {
+        "nama": "Paidy",
+        "nomor": "08999999999",
+        "likes": ["lazying around", "sleep", "read"]
+    }, {
+        "nama": "Dibleton",
+        "nomor": "08666666666",
+        "likes": ["teaching", "sweeping", "gardening"]
+    }
+    ];
+
+    function lihat(nama, prop) {
+        for (let i = 0; i < kontak.length; i++) {
+            if (kontak[i].nama === nama) {
+                return kontak[i][prop] || "tidak ada di dalam list properti";
+            }
+        }
+        return "Tidak di dalam kontak";
+    }
+
+    var data = lihat("Viody", "likes"); // coba ganti nama sama prop yg ingin dilihat valuenya
+
+    console.log(data);
+
+    // =============== FRAKSI RANDOM ===========================
+
+    // = random desimal =
+
+    function desimalRandom() {
+        return Math.random(); // fungsi bawaan JS untuk men-generasi angka random dari 0 sampai 1 tapi tidak akan menampilkan angka 1
+    }
+    console.log(desimalRandom());
+
+    // = random biasa =
+
+    function angkaRandom() {
+        return Math.floor(Math.random() * 10); // menampilkan angka 1 - 9 tapi tidak akan menampilkan 10
+    }
+
+    console.log(angkaRandom());
+
+    // = random dgn minimal n maksimal =
+
+    function minMax(min, maks) {
+        return Math.floor(Math.random() * (maks - min + 1)) + min;
+    }
+
+    console.log(minMax(3, 6)); // angka yang ter regenrasi adalah antara 3 - 6
+
+    // = mengubah tipe data parse =
+
+    function ubahKeInt(string) {
+        return parseInt(string);
+    }
+
+    console.log(ubahKeInt("75")); //mengubah string 75 menjadi int 75
+
+    // = mengubah tipe data parse dgn base =
+
+    function ubahkeInt2(str) {
+        return parseInt(str, 2); // 2 disini adalah untuk memberitahu JS bahwa itu adalah biner nanti
+    }
+
+    console.log(ubahkeInt2("11010"));
+
+    // ======================== OPERATOR TERNARI ================================
+
+    // Syntax-nya --> kondisi ? statement-jika-benar : statement-jika-salah;
+
+    // misal:
+
+    function sama(a, b) {
+        return a === b ? "benar" : "salah";
+    }
+
+    console.log(sama(3, 4));
+
+    // = nested ternary =
+
+    function ternari(angka) {
+        return angka < 0 ? "kurang dari nol" : angka > 0 ? "lebih dari nol" : "nol";
+    }
+
+    console.log(ternari(0));
+
+    /* === Perbedaan LET dgn var ===
+    1. let tidak mengizinkan programmer untuk mendeklerasikan untuk ke 2x-nya, sedangkan var masih bisa yg dimana akan mengubah isi var tersebut
+    2. let memiliki scope block sedangkan var memiliki scope global
+    */
+
+    // misal :
+
+    let depan = "viody";
+    let belakang = "alfaridzi";
+    //let depan = "paidy"; //... mencoba mengganti value let depan dgn paidy namun karena let maka akan menghasilkan error
+
+    var nama = depan + ' ' + belakang;
+    var nama = "tergantikan"; //... berbeda dengan var yg dapat diganti isinya sesuka hati
+
+    console.log(nama);
+
+    /*
+
+    ==== FYI but it's IMPORTANT to know! ====
+
+    1. Penggunaan const dan let sangat di rekomendasikan daripada var... karena var sangat dinamis sehingga data yang tersimpan dalam var bisa terubah jia sewaktu2 ada kesalahan dalam kodingan-nya.
+    2. jika ingin mengubah nilai dari const maka perlu fungsi dari JS-nya, seperti .push, .shift, dkk
+    3. jika ingin keukeuh bahwa const tidak dapat di ubah gunakan saja fungsi "Object.freeze(nama-objek)".
+
+    */
+
+
+</script>

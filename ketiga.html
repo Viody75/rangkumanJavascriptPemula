@@ -1,0 +1,210 @@
+<script>
+
+    /*
+                         __________________________________________
+                        |                                          |
+    =================== |  Rangkuman SourceCode Javascript pemula  | ====================================================
+                        |          untuk belajar sendiri           |
+                        |             Bagian : Ketiga              |
+                        |                                          |
+    =================== |        Made by : Viody Alfaridzi         | ====================================================
+                        |__________________________________________|
+        
+        bisa di pelajari sendiri langsung via Freecodecamp.org
+    
+        Persiapan :
+        1. Punya text editor; Visual Studio Code (recomended), Sublime, Atom, Notepad
+        2. Buka file ini di code editor n di browser (Chrome (recomended))
+        3. Inspect halaman web-nya, lalu ke console
+    
+        */
+
+    // ============ SWITCH ===============
+
+    //switch sbg alternatif dari chained if else yg dibuat dibagian akhir bagian kedua
+
+    //misal :
+
+    function tesSwitch(pilihan) {
+        var jawaban = "";
+        switch (pilihan) {
+            case 1: //nama case bisa aja pakai string, misal: "pertama"
+                jawaban = "Pilihan Pertama";
+                break;
+
+            case 2:
+                jawaban = "Pilihan Kedua";
+                break;
+
+            case 3:
+                jawaban = "Pilihan Ketiga";
+                break;
+
+            default:
+                jawaban = "Tidak ada";
+                break;
+        }
+        return jawaban;
+    }
+
+    console.log(tesSwitch(6));
+
+    // ============== OBJECTS ==================
+
+    // kaya array bedanya untuk ngakses objek menggunakan properties dan syntax-nya
+
+    var kucingKu = {
+        "nama": "Garfield",
+        "warna": "Oren",
+        "bentukan": "gemuk",
+        "anak": 3
+    };
+
+    // = mengakses objek dengan dot notation = 
+
+    var pakaian = {
+        "topi": "Kuplup",
+        "baju": "Polo-shirt putih",
+        "celana": "Jeans Gab"
+    };
+
+    var topiKu = pakaian.topi; // penggunaan dot notation
+    var bajuKu = pakaian.baju;
+
+    // = mengakses objek dgn braket notation = 
+
+    console.log("aku memakai : " + topiKu + ", dan " + bajuKu);
+
+    var pakaian2 = {
+        "topi": "Kuplup",
+        "baju": "Polo-shirt putih",
+        "celana": "Jeans Gab"
+    };
+
+    var topiKu = pakaian2["topi"]; // penggunaan dot notation
+    var bajuKu = pakaian2["celana"];
+
+    console.log("aku memakai : " + topiKu + ", dan " + bajuKu);
+
+    // = mengganti nilai dalam objek =
+
+    var perlengkapan = {
+        "tas": "eager backpack",
+        "jaket": "jaket parasut tebal",
+        "celana": "celana hiking"
+    };
+
+    perlengkapan.tas = "rayban backpack";
+
+    console.log(perlengkapan.tas);
+
+    // = menambah property ke objek =
+
+    perlengkapan['sepatu'] = 'safety hiking boots'; // menambahkan property 'sepatu' ke objek perlengkapan
+
+    // = menghapus property dari objek =
+
+    delete perlengkapan.sepatu; // menghapus property 'sepatu' dari objek perlengkapan
+
+    /*
+
+    ==== FYI but it's IMPORTANT to know! ====
+
+    1. nge-passing nilai variabel dalam function bisa sangat rumit n membingungkan, untuk memahami cara passing nilai maka harus banyak mencoba terus kode2 yang telah dipelajari
+
+    */
+
+    // = penggunaan hasOwnProperty =
+
+    var hadiahKu = {
+        "baju": "T-Shirt polos",
+        "celana": "Kamo urban",
+        "jaket": "Parka winter"
+    };
+
+    function hadiah(cekProp) {
+        if (hadiahKu.hasOwnProperty(cekProp)) {
+            return hadiahKu[cekProp];
+        } else {
+            return "Hadiah tidak ada di list";
+        }
+    };
+
+    console.log(hadiah("jake"));
+
+    // === penggunaan objek kompleks ===
+
+    //  - objek dapat menyimpan macam2 tipe data -
+
+    var objekKompleks = {
+        "Objek String": "Viody",
+        "Objek Angka": 75,
+        "Objek Array": [
+            "Paidy", 76
+        ],
+        "Objek Boolean": true
+    };
+
+    // - objek yang di nest -
+
+    var itemRumah = {
+        "luar": {
+            "halaman": "api unggun",
+            "bagasi": "kendaraan"
+        },
+        "dalam": {
+            "ruangTamu": ["tv", "sofa", "lemari buku"],
+            "kamar": "tempat tidur"
+        }
+    };
+
+    var itemYgDiambil = itemRumah.dalam["kamar"]; // pemanggilan objek dapat panjang sesuai nestingnya
+    var itemDiambilViaIndex = itemRumah[1]
+
+    console.log(itemYgDiambil);
+    console.log(itemDiambilViaIndex);
+
+    // = contoh tentang objek kompleks lagii =
+
+    var koleksi = {
+        "75": {
+            "nama": "Viody Alfaridzi",
+            "pekerjaan": "Designer",
+            "skill": ["Web Developer", "Designer"]
+        },
+        "76": {
+            "nama": "Paidy Alupariji",
+            "pekerjaan": "CEO PeTar",
+            "skill": []
+        },
+        "73": {
+            "nama": "Wigleton",
+
+        }
+    };
+
+    var kopianKoleksi = JSON.parse(JSON.stringify(koleksi)); // fungsi JSON untuk mengopi "koleksi" kedalam var "kopianKoleksi"
+
+    function updateKoleksi(id, prop, value) { // parameter parse-nya boleh sembarang saja selain id, prop n value... 
+        /*
+        yang perlu di ingat adalah urutan braket index-nya
+        misal :
+        [id]->[prop]->[value]
+         75 -> nama -> Viody Alfaridzi
+        */
+        if (value === '') {
+            delete koleksi[id][prop]; // menghapus id n prop jika value-nya tidak ada
+        } else if (prop === "skill") { // jika prop yang kita masukan adalah skill maka akan menjalankan fungsi berikut
+            koleksi[id][prop] = koleksi[id][prop] || [];
+            koleksi[id][prop].push(value); // penambahan array
+        } else {
+            koleksi[id][prop] = value;
+        }
+
+        return koleksi;
+    }
+
+    console.log(updateKoleksi("73", "pekerjaan", "Conten Creator"));
+    console.log(updateKoleksi("76", "skill", "Programmer"));
+
+</script>
