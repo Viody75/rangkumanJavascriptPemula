@@ -1,0 +1,246 @@
+<script>
+
+    /*
+                       __________________________________________
+                      |                                          |
+  =================== |  Rangkuman SourceCode Javascript pemula  | ====================================================
+                      |          untuk belajar sendiri           |     
+                      |            Bagian : terakhir             |
+                      |                                          |
+  =================== |        Made by : Viody Alfaridzi         | ====================================================
+                      |__________________________________________|
+      
+      bisa di pelajari sendiri langsung via Freecodecamp.org
+  
+      Persiapan :
+      1. Punya text editor; Visual Studio Code (recomended), Sublime, Atom, Notepad, dkk
+      2. Buka file ini di code editor n di browser (Chrome (recomended), google, dkk)
+      3. Inspect halaman web-nya, lalu ke console
+  
+      */
+
+
+    // ==================== Shortcut Function ================================
+
+    const hardCode = function (params) { // penggunaan function biasa
+        return new Date();
+    };
+
+    const ezCode = () => new Date(); // penggunaan function pakai shortcut
+
+    // = penggunaan shortcut function dgn array =
+
+    const gabung = (arr1, arr2) => arr1.concat(arr2); // fungsi ".concat()" adalah untuk menggabungkan 2 array
+
+    console.log(gabung([7, 5], [7, 6]));
+
+    // =  mengatur nilai default dalam arrow shortcuts =
+
+    const increment = (function () {
+        return function increment(angka, nilai = 1) { // jadi jika tidak ada nilai yg di parsing maka default-nya adalah 1
+            return angka + nilai;
+        }
+    })();
+
+    console.log(increment(7, 2)); // nilai-nya 2
+    console.log(increment(7)); // secara default nilai-nya akan menjadi 1
+
+    // === Penggunaan Operator Sisa ===
+
+    // cara biasa
+
+    const sum = (
+        function () {
+            return function sum(x, y, z) {
+                const args = [x, y, z];
+                return args.reduce((a, b) => a + b, 0);
+            };
+        }
+    )();
+    console.log(sum(2, 2, 3));
+
+    // === menggunakan operator sisa ===
+
+    const tambah = (
+        function () {
+            return function tambah(...args) { // "...args" adalah operator sisa yang berfungsi memasukan berapapun nilai yg di parse kedalam "args"
+                return args.reduce((a, b) => a + b, 0);
+            };
+        }
+    )();
+
+    console.log(tambah(1, 2, 2));
+
+    // === spesial syntax destruktur ===
+
+    // gunanya buat mempersignkat kode
+
+    // misal :
+
+    // = cara biasa =
+
+    var koordinat = {
+        x: 7.5,
+        y: 7.6,
+        z: 7.3
+    };
+
+    var x = koordinat.x; // x = 7.5
+    var y = koordinat.y; // y = 7.6
+    var z = koordinat.z; // z = 7.3
+
+    // = menggunakan destruktur =
+
+    const { x: a, y: b, z: c } = koordinat; // a = 7.5 , b = 7.6 , c = 7.3
+
+    // = menggunakan destructur di nested array =
+
+    const TINGGI_BADAN = {
+        SMANSA: { min: 152, max: 175 },
+        SMADA: { min: 164, max: 180 }
+    };
+
+    function tinggiSmada(tinggi) {
+
+        const { SMADA: { max: maxSmada } } = tinggi;
+
+        return maxSmada;
+    }
+
+    console.log(tinggiSmada(TINGGI_BADAN));
+
+    // = memanipulasi isi array dgn ragam cara = 
+
+    // misal :
+
+    const [p, q, , r] = [1, 2, 3, 4, 5, 6];
+    console.log(p, q, r);
+
+    // atau dengan cara
+
+    let e = 7, f = 5;
+    (() => {
+        [e, f] = [f, e]
+    })();
+
+    console.log(e, f);
+
+    // cara lainnya :
+
+    const awal = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+    function hapusDuaDiawal(list) {
+        const [, , ...arr] = list; // menghilangkan 2 urutan array pertama
+        return arr;
+    };
+
+    const ubah = hapusDuaDiawal(awal);
+    console.log(awal);
+    console.log(ubah);
+
+    // = koding challenge freecodecamp = manipulasi array dgn simbol backticks =
+
+    const result = {
+        sukses: ["var1", "var2", "var3"],
+        gagal: ["var4", "var5", "var6"],
+        skip: ["var7", "var8", "var9"]
+    };
+
+    function buatList(data) {
+        const hasilDisplay = [];
+        for (let i = 0; i < data.length; i++) {
+            hasilDisplay.push(`<li class="text-warning"> ${data[i]}</li>`)
+        }
+        return hasilDisplay;
+    }
+
+    const hasilDisplay = buatList(result.gagal);
+    console.log(hasilDisplay);
+
+    // = manipulasi literal =
+
+    // cara biasa :
+    const manusia = (nama, umur, gender) => {
+        return {
+            nama: nama,
+            umur: umur,
+            gender: gender
+        };
+    };
+
+    console.log(manusia("dibleton", 100, "unknown"));
+
+    // cara singkat
+    const manusia1 = (nama, umur, gender) => ({ nama, umur, gender });
+
+    console.log(manusia1("wigleton", 70, "unknown"));
+
+    // ======================= Penggunaan SYNTAX CLASS ===================================
+
+    var spaceShuttle = function (targetPlanet) { // fungsi untuk menyimpan apa yg di parse pada fungsi ke "targetPlanet"
+        this.targetPlanet = targetPlanet;
+    }
+
+    let zeus = new spaceShuttle('jupiter');
+    let midas = new spaceShuttle('bumi');
+
+    console.log(zeus.targetPlanet); // coba ganti zeus ke midas
+
+    // cara mudahnya :
+
+    class satelit { // menggunakan syntax class
+        constructor(planetTarget) {
+            this.planetTarget = planetTarget;
+        }
+    }
+
+    let bulan = new satelit('bumi'); // maksudnya "jadikan bulan bagian dari satelit di planet bumi"
+
+    console.log(bulan.planetTarget); // jadi ketika var bulan menggunakan fungsi "planetTarget" maka JS akan mengembalikan nilai "bumi"
+
+    // ============= menggunakan Getter dan Setter =============================
+
+    // getter berguna untuk mengambil suatu value dalam class object
+
+    // setter berguna untuk mengeset variabel tersebut ke dalam objek
+
+    function buatClass() {
+        class thermostat {
+            constructor(temp) {
+                this._temp = 5 / 9 * (temp - 32);
+            }
+            get temperatur() {
+                return this._temp;
+            }
+            set temperatur(updatedTemp) {
+                this._temp = updatedTemp;
+            }
+        }
+        return thermostat;
+    }
+
+    const thermostat = buatClass;
+    const thermos = new thermostat(75);
+    let temp = thermos.temperatur;
+    thermos.temperatur = 25;
+    temp = thermos.temperatur;
+    console.log(temp);
+
+    // ====================== IMPORT n EXPORT ==============================================
+
+    // import { kapital } from "./fungsiKapital.js";
+
+    // const kap = kapital("hello the world");
+
+    // console.log(kap);
+
+    // jika mengimpor banyak item dapat menggunakan syntax *
+
+    // misal :
+
+    // import * as nama from " ./nama_file ";
+
+
+
+
+</script>

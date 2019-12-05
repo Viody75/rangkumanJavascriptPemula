@@ -1,0 +1,1 @@
+export const kapital = str => str.toUpperCase()
